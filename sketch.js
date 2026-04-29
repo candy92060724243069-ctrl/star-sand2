@@ -29,8 +29,8 @@ function preload() {
 }
 
 function setup() {
-  let canvasW = 1920; 
-  let canvasH = 1080;
+  let canvasW = 1270; 
+  let canvasH = 2260;
   let canvas = createCanvas(canvasW, canvasH);
   canvas.style('display', 'block');
   canvas.style('margin', 'auto');
@@ -128,7 +128,9 @@ class Star {
       pushForce.setMag(0.22);
       this.vel.add(pushForce);
       this.hoverTimer++;
-      if (this.hoverTimer > 40) this.isActivated = true; 
+      
+      // ✅ 偵測幀數已改為 27
+      if (this.hoverTimer > 27) this.isActivated = true; 
     } else {
       this.isActivated = false;
       this.hoverTimer = 0; 
@@ -199,7 +201,6 @@ class Star {
   }
 
   drawSpecimenLabel() {
-    // ✅ 字體再縮小一點：中文 18，學名 14
     let mainSize = 18;
     let subSize = 14;
     textSize(mainSize); 
@@ -218,7 +219,6 @@ class Star {
     translate(lx, ly);
     stroke(255, this.labelAlpha * 0.8);
     strokeWeight(1);
-    // 縮短指示線
     line(0, 0, 0, 60); line(0, 0, 15, 0);
     noStroke();
     fill(0, 20, 40, this.labelAlpha * 0.8);
